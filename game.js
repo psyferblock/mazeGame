@@ -35,13 +35,20 @@ document.addEventListener("DOMContentLoaded",function(e){
        
         
     });
+
+    // the event listener that restarts the game
+    
+    start.addEventListener("click",()=>{
+        location.reload();
+    });
+
     // the event listener that starts the game 
 
     start.addEventListener("mouseenter",()=>{
         if (count>0){
-        status.innerHTML = " lets start the game ";
-        gameStarted = true;
-        paintboundariesBlack(boundaries);
+            status.innerHTML = " lets start the game ";
+            gameStarted = true;
+            paintboundariesBlack(boundaries);
         }
         else{
              paintBoundariesRed(boundaries);
@@ -59,11 +66,13 @@ document.addEventListener("DOMContentLoaded",function(e){
         if (gameStarted==false) return;
         gameStarted = false;
         paintboundariesBlack(boundaries);
-        score+=10;
+        score=+10;
                 
         // status messages and the score board
 
         status.innerText = `congrats...soooo proud. ${score} points `;
+
+        ScoreBoard.innerHTML = `${count}`;
 
     });
 
@@ -99,4 +108,4 @@ function paintboundariesBlack(boundaries){
     };
 };
 
-// Thank you
+
