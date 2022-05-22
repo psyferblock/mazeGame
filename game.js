@@ -45,18 +45,13 @@ document.addEventListener("DOMContentLoaded",function(e){
     // the event listener that starts the game 
 
     start.addEventListener("mouseenter",()=>{
-        if (count>0){
+        if (count>=0){
             status.innerHTML = " lets start the game ";
             gameStarted = true;
             paintboundariesBlack(boundaries);
         }
-        else{
-             paintBoundariesRed(boundaries);
-             score=0
-             status.innerHTML=`no more lives left o...back to ${score}. Dont be sad! Be awesome !`;
-
-             
-        }
+                  
+        
         
     });
 
@@ -72,7 +67,6 @@ document.addEventListener("DOMContentLoaded",function(e){
 
         status.innerText = `congrats...soooo proud. ${score} points `;
 
-        ScoreBoard.innerHTML = `${count}`;
 
     });
 
