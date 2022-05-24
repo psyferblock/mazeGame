@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded",function(e){
     var score=0; //the count that keeps score
     var count=3; //the count that keeps track of lives
     var gameContainer=document.getElementById("game"); //var for the div that holds the maze
-    var ScoreBoard = document.getElementsByClassName("example");
-
+    var ScoreBoard = document.getElementsByClassName(".example");
 
     // the event listener that starts initiates the game 
-
+    
     gameContainer.addEventListener("mouseenter",()=>{
-        cursorInsideGame==true && gameStarted ==true;
+        cursorInsideGame==true;
+        gameStarted ==true;
     });
 
     gameContainer.addEventListener("mouseleave",()=>{
@@ -49,11 +49,10 @@ document.addEventListener("DOMContentLoaded",function(e){
             status.innerHTML = " lets start the game ";
             gameStarted = true;
             paintboundariesBlack(boundaries);
+            startTimer();
+
         }
-                  
-        
-        
-    });
+   });
 
     // the end div and its functionality/eventlistener
     
@@ -66,6 +65,8 @@ document.addEventListener("DOMContentLoaded",function(e){
         // status messages and the score board
 
         status.innerText = `congrats...soooo proud. ${score} points `;
+        makePopUpAppear();  
+        endTimer();
 
 
     });
@@ -82,6 +83,15 @@ document.addEventListener("DOMContentLoaded",function(e){
             count-=1;
         });
     };
+
+
+
+
+
+
+
+
+
 });
 
 // the function that paints the borders red
@@ -98,8 +108,51 @@ function paintBoundariesRed(boundaries){
 
 function paintboundariesBlack(boundaries){
     for ( boundary of boundaries){
+        
         boundary.style.borderColor = "black";
+        
+
     };
+
+ 
+    
 };
 
+
+var timerCenter = document.getElementById("timer");
+timerCenter.style.display="flex";
+timerCenter.style.flexDirection="space-around";
+timerCenter.style.justifyContent= "center";
+timerCenter.style.alignItems="center"
+var seconds =00;
+var startTimer = document.getElementById("initialTime");
+var lastTime = document.getElementById("lastTime");
+var bestTime = document.getElementById("bestTime");
+
+
+var startTimer=()=>{
+    setInterval(()=>{
+        startTimer.innerHTML = seconds +"seconds"
+        seconds++
+
+    },1000);
+   
+    
+
+    
+}
+var endTimer=()=>{
+    seconds=startTimer;
+
+    clearInterval(startTimer);
+
+}
+function reset(){
+    seconds=00
+    tens=00
+    if (endTimer<seconds){
+        maxTime=seconds
+    }
+
+};
 
